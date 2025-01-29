@@ -1,4 +1,6 @@
 ﻿using System.Text;
+using Microsoft.Maui.ApplicationModel;
+using Microsoft.Maui.Devices;
 
 namespace Plugin.NFC.Maui.Sample
 {

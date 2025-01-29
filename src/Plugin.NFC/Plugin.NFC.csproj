@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <!--Work around so the conditions work below-->
-    <TargetFrameworks>netstandard1.0;netstandard2.0;Xamarin.iOS10;MonoAndroid10.0;net6.0;net6.0-android;net6.0-ios</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net9.0;net9.0-android;net9.0-ios</TargetFrameworks>
 
     <AssemblyName>Plugin.NFC</AssemblyName>
     <RootNamespace>Plugin.NFC</RootNamespace>

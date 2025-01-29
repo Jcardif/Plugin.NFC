@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using Microsoft.Maui;
 
 namespace Plugin.NFC.Maui.Sample
 {

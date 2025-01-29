@@ -3,6 +3,7 @@ using Android.Content;
 using Android.Content.PM;
 using Android.Nfc;
 using Android.OS;
+using Microsoft.Maui;
 
 namespace Plugin.NFC.Maui.Sample
 {

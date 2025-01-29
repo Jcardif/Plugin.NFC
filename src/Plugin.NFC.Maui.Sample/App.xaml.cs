@@ -1,4 +1,5 @@
-﻿namespace Plugin.NFC.Maui.Sample
+﻿using Microsoft.Maui.ApplicationModel;
+namespace Plugin.NFC.Maui.Sample
 {
     public partial class App : Application
     {
