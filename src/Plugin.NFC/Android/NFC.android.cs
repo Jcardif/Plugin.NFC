@@ -98,13 +98,9 @@ namespace Plugin.NFC
 			// MonoAndroid12.0 needs JDK 11.
 			PendingIntentFlags pendingIntentFlags = 0;
 
-#if NET6_0_OR_GREATER
             if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.S)
                 pendingIntentFlags = PendingIntentFlags.Mutable;
-#else
-            if ((int)Android.OS.Build.VERSION.SdkInt >= 31) //Android.OS.BuildVersionCodes.S
-				pendingIntentFlags = (PendingIntentFlags)33554432; //PendingIntentFlags.Mutable
-#endif
+
 
             var pendingIntent = PendingIntent.GetActivity(CurrentActivity, 0, intent, pendingIntentFlags);
 
