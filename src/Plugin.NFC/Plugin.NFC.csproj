@@ -6,13 +6,13 @@
 
     <AssemblyName>Plugin.NFC</AssemblyName>
     <RootNamespace>Plugin.NFC</RootNamespace>
-    <PackageId>Plugin.NFC</PackageId>
+    <PackageId>Plugin.MAUI.NFC</PackageId>
 
     <Product>$(AssemblyName) ($(TargetFramework))</Product>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
-    <Version>1.0.0.0</Version>
-    <PackageVersion>1.0.0.0</PackageVersion>
+    <AssemblyVersion>0.1.27</AssemblyVersion>
+    <AssemblyFileVersion>0.1.27</AssemblyFileVersion>
+    <Version>0.1.27</Version>
+    <PackageVersion>0.1.27</PackageVersion>
     <PackOnBuild>true</PackOnBuild>
     <NeutralLanguage>en</NeutralLanguage>
     <DefineConstants>$(DefineConstants);</DefineConstants>
@@ -24,21 +24,21 @@
     <DebugType>portable</DebugType>
 
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/franckbour/Plugin.NFC</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/franckbour/Plugin.NFC</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Jcardif/Plugin.NFC</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Jcardif/Plugin.NFC</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>https://github.com/franckbour/Plugin.NFC/blob/master/CHANGELOG.md</PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/Jcardif/Plugin.NFC/blob/master/CHANGELOG.md</PackageReleaseNotes>
     <PackageIconUrl>https://github.com/franckbour/Plugin.NFC/raw/master/art/nfc128.png</PackageIconUrl>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageTags>maui, xamarin, ios, android, xamarin.forms, plugin, NFC</PackageTags>
+    <PackageTags>maui,  ios, android, plugin, NFC</PackageTags>
 
-    <Title>NFC Plugin for Xamarin</Title>
+    <Title>NFC Plugin for .NET MAUI</Title>
     <Summary>A Cross-Platform plugin to easily read and write NFC tags.</Summary>
     <Description>Cross-Platform NFC (Near Field Communication) plugin to easily read and write NFC tags in your application.</Description>
 
     <Owners>Franck Bour</Owners>
-    <Authors>Franck Bour</Authors>
-    <Copyright>Copyright 2022</Copyright>
+    <Authors>Franck Bour, Josh N</Authors>
+    <Copyright>Copyright 2025</Copyright>
 
     <!-- When built in 2019 will remove extra references on pack for iOS in System.Drawing.Common -->
     <DisableExtraReferences>false</DisableExtraReferences>
@@ -72,6 +72,8 @@
     <DefineConstants Condition=" '$(_DROID)' == 'true' ">$(DefineConstants);__ANDROID__;__MOBILE__;</DefineConstants>
     <DefineConstants Condition=" '$(_IOS)' == 'true' ">$(DefineConstants);__IOS__;__MOBILE__;</DefineConstants>
     <DefineConstants Condition=" '$(_NET6)' == 'true' ">$(DefineConstants);__NET6__;</DefineConstants>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(_NET6)' == 'true' AND '$(_MOBILE)' == 'true' ">
@@ -90,6 +92,10 @@
 
   <ItemGroup>
     <None Include="..\..\art\nfc128.png" PackagePath="icon.png" Pack="true" />
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <Compile Include="**\*.shared.cs" />
   </ItemGroup>
 
