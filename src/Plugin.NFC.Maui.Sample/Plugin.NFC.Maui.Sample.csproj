@@ -9,14 +9,12 @@
     <!-- Display name -->
     <ApplicationTitle>Plugin.NFC.Maui.Sample</ApplicationTitle>
     <!-- App Identifier -->
-    <ApplicationId>com.companyname.plugin.nfc.maui.sample</ApplicationId>
-    <ApplicationIdGuid>F69E3448-C788-44B5-BB90-6D51D7204472</ApplicationIdGuid>
+    <ApplicationId>com.plugin.nfc.maui.sample</ApplicationId>
     <!-- Versions -->
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
     <ApplicationVersion>1</ApplicationVersion>
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
-    <CodesignKey>iPhone Developer</CodesignKey>
     <ProvisioningType>automatic</ProvisioningType>
   
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>

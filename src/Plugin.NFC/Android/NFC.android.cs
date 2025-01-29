@@ -252,15 +252,76 @@ namespace Plugin.NFC
 						OnTagDisconnected?.Invoke(null, EventArgs.Empty);
 					}
 				}
-				else
-					throw new Exception(Configuration.Messages.NFCErrorNotCompliantTag);
+                else
+                {
+                    // Attempt to format tag as NDEF
+                    var formatable = NdefFormatable.Get(_currentTag);
+                    if (formatable != null)
+                    {
+                        try
+                        {
+                            // Create the NDEF message to format the tag
+                            NdefMessage message = null;
+                            if (clearMessage)
+                                message = GetEmptyNdefMessage();
+                            else
+                            {
+                                var records = new List<NdefRecord>();
+                                foreach (var record in tagInfo.Records)
+                                {
+                                    var ndefRecord = GetAndroidNdefRecord(record);
+                                    if (ndefRecord != null)
+                                        records.Add(ndefRecord);
+                                }
+
+                                if (records.Any())
+                                    message = new NdefMessage(records.ToArray());
+                            }
+
+                            if (message != null)
+                            {
+                                formatable.Connect();
+                                formatable.Format(message);
+                                // if (!clearMessage && makeReadOnly)
+                                // {
+                                //     if (!MakeReadOnly(formatable))
+                                //         Console.WriteLine("Cannot lock tag");
+                                // }
+
+                                var nTag = GetTagInfo(_currentTag, message);
+                                OnMessagePublished?.Invoke(nTag);
+                            }
+                            else
+                            {
+                                throw new Exception(Configuration.Messages.NFCErrorWrite);
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            throw new Exception("Formating Error: " + e.Message);
+                        }
+                        finally
+                        {
+                            if(formatable.IsConnected)
+                                formatable.Close();
+                            
+                            _currentTag = null;
+                            OnTagDisconnected?.Invoke(null, EventArgs.Empty);
+                        }
+                    }
+
+                    else
+                    {
+                        throw new Exception(Configuration.Messages.NFCErrorNotCompliantTag);
+                    }
+                }
 			}
 			catch (Exception ex)
 			{
 				StopPublishingAndThrowError(ex.Message);
 			}
 		}
-
+        
 		/// <summary>
 		/// Handle Android OnNewIntent
 		/// </summary>
